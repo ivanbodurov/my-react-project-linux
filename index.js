@@ -42,6 +42,7 @@ const list = (
     <li>Bananas</li>
     <li>Cherries</li>
     <li>Coconuts</li>
+    <li>Avocados</li>
   </ul>
 );
 
