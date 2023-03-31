@@ -74,14 +74,25 @@ const sayGoodbye = <h2>{(myNum < 10) ? 'Goodbye!' : 'Hello'}</h2>;
 
 //React components
 function Plane(props) {
-  return <p>Hi, I am a {props.type} plane.</p>;
+  return <p>Hi, I am a {props.feature.type} plane {props.feature.brand}.</p>;
 }
+
 function Garage() {
+  const planeFeature = {
+    type: "defender",
+    brand: "МиГ-35"
+  };
+  const boatFeature = {
+    type: "motor",
+    color: "white"
+  };
+  const myPlane = <Plane feature={planeFeature} />;
+  const myBoat = <Boat feature={boatFeature} />;
   return (
     <>
       <p><b>Who is in my garage?</b></p>
-      <Plane type="defender" />
-      <Boat type="motor" />
+      {myPlane}
+      {myBoat}
     </>
   );
 }
