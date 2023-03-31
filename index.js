@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import {name, age} from './person.js';
 import message from './message.js';
+import Boat from './Boat.js';
 
 const myFirstElement = <h1>Hello React!</h1>;
 const mySecondElement = <h2>Hello ReactJS!</h2>;
@@ -71,9 +72,25 @@ if (myNum > 44) {
 
 const sayGoodbye = <h2>{(myNum < 10) ? 'Goodbye!' : 'Hello'}</h2>;
 
-// This works with 'react-dom/client' too!
+//React components
+function Plane(props) {
+  return <p>Hi, I am a {props.type} plane.</p>;
+}
+function Garage() {
+  return (
+    <>
+      <p><b>Who is in my garage?</b></p>
+      <Plane type="defender" />
+      <Boat type="motor" />
+    </>
+  );
+}
+
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(sayGoodbye);
+root.render(<Garage />);
+
+
 
 
 
