@@ -86,8 +86,10 @@ function Garage() {
     type: "motor",
     color: "white"
   };
+
   const myPlane = <Plane feature={planeFeature} />;
   const myBoat = <Boat feature={boatFeature} />;
+  
   return (
     <>
       <p><b>Who is in my garage?</b></p>
