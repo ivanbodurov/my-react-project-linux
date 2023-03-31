@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client';
 import {name, age} from './person.js';
 import message from './message.js';
 import Boat from './Boat.js';
+import Motor from './Motor.js';
 
 const myFirstElement = <h1>Hello React!</h1>;
 const mySecondElement = <h2>Hello ReactJS!</h2>;
@@ -74,14 +75,27 @@ const sayGoodbye = <h2>{(myNum < 10) ? 'Goodbye!' : 'Hello'}</h2>;
 
 //React components
 function Plane(props) {
-  return <p>Hi, I am a {props.type} plane.</p>;
+  return <p>Hi, I am a {props.feature.type} plane {props.feature.brand}.</p>;
 }
 function Garage() {
+  const planeFeature = {
+    brand: "МиГ-35",
+    type: "defender"
+  }
+  const boatFeature = {
+    type: "motor",
+    color: "white"
+  }
+  const motorFeature = {
+    brand: "Ducati",
+    color: "blue"
+  }
   return (
     <>
       <p><b>Who is in my garage?</b></p>
-      <Plane type="defender" />
-      <Boat type="motor" />
+      <Plane feature={planeFeature} />
+      <Boat feature={boatFeature} />
+      <Motor feature={motorFeature} />
     </>
   );
 }
