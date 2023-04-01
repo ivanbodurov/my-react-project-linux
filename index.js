@@ -72,7 +72,7 @@ if (myNum > 44) {
 
 const sayGoodbye = <h2>{(myNum < 10) ? 'Goodbye!' : 'Hello'}</h2>;
 
-//React components
+//React components and props
 function Plane(props) {
   return <p>Hi, I am a {props.feature.type} plane {props.feature.brand}.</p>;
 }
@@ -99,9 +99,33 @@ function Garage() {
   );
 }
 
+//React events
+const InvestMarket = () => {
+  const buyBTC = () => {
+    alert('Congrats. You just have bought some Bitcoins.');
+  }
+  const buyXMR = (msg) => {
+    alert(msg);
+  }
+  const buyMSFT = (msg, e) => {
+    alert(msg);
+    alert("Event: " + e.type);
+  }
+  return (
+    <>
+      <button onClick={buyBTC}>Buy BTC</button>
+      <br />
+      <br />
+      <button onClick={() => buyXMR("Congrats. You just have bought some Monero.")}>Buy XMR</button>
+      <br />
+      <br />
+      <button onMouseOver={(event) => buyMSFT("Congrats. You just have bought some MSFT stocks.", event)}>Buy MSFT</button>
+    </>
+  );
+}
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(<Garage />);
+root.render(<InvestMarket />);
 
 
 
