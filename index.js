@@ -4,6 +4,7 @@ import {name, age} from './person.js';
 import message from './message.js';
 import Boat from './Boat.js';
 import Motor from './Motor.js';
+import Sportcar from './Sportcar.js';
 
 const myFirstElement = <h1>Hello React!</h1>;
 const mySecondElement = <h2>Hello ReactJS!</h2>;
@@ -73,7 +74,7 @@ if (myNum > 44) {
 
 const sayGoodbye = <h2>{(myNum < 10) ? 'Goodbye!' : 'Hello'}</h2>;
 
-//React components
+//React components and props
 function Plane(props) {
   return <p>Hi, I am a {props.feature.type} plane {props.feature.brand}.</p>;
 }
@@ -90,12 +91,17 @@ function Garage() {
     brand: "Ducati",
     color: "blue"
   }
+  const sportcarFeature = {
+    brand: "Ferrari",
+    model: "GTB 488"
+  }
   return (
     <>
       <p><b>Who is in my garage?</b></p>
       <Plane feature={planeFeature} />
       <Boat feature={boatFeature} />
       <Motor feature={motorFeature} />
+      <Sportcar feature={sportcarFeature} />
     </>
   );
 }
