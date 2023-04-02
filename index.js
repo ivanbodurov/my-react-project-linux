@@ -132,8 +132,45 @@ const InvestMarket = () => {
   );
 }
 
+//React Conditionals
+function ConnectionEstablished() {
+  return <p>Connected!</p>
+}
+function ConnectionFailed() {
+  return <p>Connection failed.</p>
+}
+
+function Connection(props) {
+  const isConnected = props.isConnected
+  // regular if() statement
+  // if (isConnected) {
+  //   return <ConnectionEstablished />
+  // } else {
+  //   return <ConnectionFailed />
+  // }
+  return (
+    <>
+      {(isConnected) ? <ConnectionEstablished /> : <ConnectionFailed />}
+    </>
+  );
+}
+
+function CryptoCollection(props) {
+  const myCollection = props.collection;
+  return (
+    <>
+      <h1>Crypto Collection</h1>
+      {myCollection.length > 0 && <h2>My crypto collection consist of {myCollection.length} types cryptocurrency.</h2>}
+    </>
+  );
+
+}
+const collection = ['Bitcoin', 'Monero', 'Solana', 'Litecoin'];
+
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(<Garage />);
+//root.render(<CryptoCollection collection={collection} />);
+root.render(<Connection isConnected={true} />);
 
 
 
