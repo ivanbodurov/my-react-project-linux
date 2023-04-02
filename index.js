@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom/client';
 import {name, age} from './person.js';
 import message from './message.js';
 import Boat from './Boat.js';
+import Motor from './Motor.js';
+import Sportcar from './Sportcar.js';
 
 const myFirstElement = <h1>Hello React!</h1>;
 const mySecondElement = <h2>Hello ReactJS!</h2>;
@@ -79,22 +81,28 @@ function Plane(props) {
 
 function Garage() {
   const planeFeature = {
-    type: "defender",
-    brand: "МиГ-35"
-  };
+    brand: "МиГ-35",
+    type: "defender"
+  }
   const boatFeature = {
     type: "motor",
     color: "white"
-  };
-
-  const myPlane = <Plane feature={planeFeature} />;
-  const myBoat = <Boat feature={boatFeature} />;
-  
+  }
+  const motorFeature = {
+    brand: "Ducati",
+    color: "blue"
+  }
+  const sportcarFeature = {
+    brand: "Ferrari",
+    model: "GTB 488"
+  }
   return (
     <>
       <p><b>Who is in my garage?</b></p>
-      {myPlane}
-      {myBoat}
+      <Plane feature={planeFeature} />
+      <Boat feature={boatFeature} />
+      <Motor feature={motorFeature} />
+      <Sportcar feature={sportcarFeature} />
     </>
   );
 }
@@ -125,7 +133,7 @@ const InvestMarket = () => {
 }
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(<InvestMarket />);
+root.render(<Garage />);
 
 
 
