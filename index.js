@@ -74,9 +74,13 @@ if (myNum > 44) {
 
 const sayGoodbye = <h2>{(myNum < 10) ? 'Goodbye!' : 'Hello'}</h2>;
 
-//React components and props
+//React components and props, react lists
 function Plane(props) {
   return <p>Hi, I am a {props.feature.type} plane {props.feature.brand}.</p>;
+}
+
+function Vehicle(props) {
+  return <b>I am a {props.type}</b>;
 }
 
 function Garage() {
@@ -96,9 +100,18 @@ function Garage() {
     brand: "Ferrari",
     model: "GTB 488"
   }
+  const vehicleType = [
+    {id: 1, type: 'tank'},
+    {id: 2, type: 'drone'},
+    {id: 3, type: 'yacht'},
+    {id: 4, type: 'private jet'}
+  ];
   return (
     <>
-      <p><b>Who is in my garage?</b></p>
+      <h1><b>Who is in my garage?</b></h1>
+      <ul>
+        {vehicleType.map((item) => <li key={item.id}><Vehicle type={item.type} /></li>)}
+      </ul>
       <Plane feature={planeFeature} />
       <Boat feature={boatFeature} />
       <Motor feature={motorFeature} />
@@ -170,7 +183,7 @@ const collection = ['Bitcoin', 'Monero', 'Solana', 'Litecoin'];
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 //root.render(<CryptoCollection collection={collection} />);
-root.render(<Connection isConnected={true} />);
+root.render(<Garage />);
 
 
 
