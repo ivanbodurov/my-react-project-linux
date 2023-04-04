@@ -1,4 +1,5 @@
 import React from 'react';
+import { useState } from 'react';
 import ReactDOM from 'react-dom/client';
 import {name, age} from './person.js';
 import message from './message.js';
@@ -180,10 +181,57 @@ function CryptoCollection(props) {
 }
 const collection = ['Bitcoin', 'Monero', 'Solana', 'Litecoin'];
 
+//React Forms
+function MyForm() {
+  //const [username, setUsername] = useState("");
+  //const [textarea, setTextarea] = useState("The content of a textarea goes in the value attribute");
+  //const [currency, setCurrency] = useState("SOL");
+  const [inputs, setInputs] = useState({});
+
+  const handleChange = (event) => {
+    const name = event.target.name;
+    const value = event.target.value;
+    setInputs((values) => ({...values, [name]: value}));
+  }
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    console.log(`The username is ${inputs.username}`);
+    console.log(`The email is ${inputs.email}`);
+    console.log(`The message is: ${inputs.message}`);
+    console.log(`The currency is ${inputs.currency}`);
+    console.log(inputs);
+  }
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <label>Enter your username:</label><br />
+      <input type="text" name="username" value={inputs.username || ""} onChange={handleChange} /><br /><br />
+      <label>Enter your email:</label><br />
+      <input type="email" name="email" value={inputs.email || ""} onChange={handleChange} /><br />< br/>
+      <label>Enter your message:</label><br />
+      <textarea value={inputs.message} name="message" onChange={handleChange}></textarea><br /><br />
+      <label>Select your currency:</label><br />
+      <select value={inputs.currency} name="currency" onChange={handleChange}>
+        <option>Select currency..</option>
+        <option value="BTC">Bitcoin</option>
+        <option value="XMR">Monero</option>
+        <option value="ADA">Cardano</option>
+        <option value="SOL">Solana</option>
+      </select>
+      <br /><br />
+      <input type="submit" />
+      <p>Your username is: {inputs.username}</p>
+      <p>Your email is: {inputs.email}</p>
+      <p>Your message is: {inputs.message}</p>
+      <p>Your currency is: {inputs.currency}</p>
+    </form>
+  );
+}
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 //root.render(<CryptoCollection collection={collection} />);
-root.render(<Garage />);
+root.render(<MyForm />);
 
 
 
