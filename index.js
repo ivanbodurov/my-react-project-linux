@@ -251,6 +251,7 @@ export default function App() {
   );
 }
 
+//This comment line is from html-skeleton branch by Github.
 const root = ReactDOM.createRoot(document.getElementById('root'));
 //root.render(<CryptoCollection collection={collection} />);
 root.render(<App />);
