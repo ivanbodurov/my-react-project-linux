@@ -13,6 +13,9 @@ import Boat from './Boat.js';
 import Motor from './Motor.js';
 import Sportcar from './Sportcar.js';
 import Todos from './Todos';
+//import './style.css';
+import AICar from './AICar';
+
 
 const myFirstElement = <h1>Hello React!</h1>;
 const mySecondElement = <h2>Hello ReactJS!</h2>;
@@ -275,12 +278,28 @@ const AppTodos = () => {
 
 }
 
+//React CSS Styling
+const HeaderStyle = () => {
+  const myStyle = {
+    color: "white",
+    backgroundColor: "DodgerBlue",
+    padding: "10px",
+    fontFamily: "Sans-Serif"
+  }
+  return (
+    <>
+      <h1>Hello Style!</h1>
+      <p>Add a little style!</p>
+    </>
+  );
+}
+
 
 //This comment line is from html-skeleton branch by Github.
 //This line is from html-skeleton branch on Git Pull Branch from Github tutorial.
 const root = ReactDOM.createRoot(document.getElementById('root'));
 //root.render(<CryptoCollection collection={collection} />);
-root.render(<AppTodos />);
+root.render(<AICar />);
 
 
 
