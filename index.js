@@ -277,6 +277,7 @@ const AppTodos = () => {
 
 
 //This comment line is from html-skeleton branch by Github.
+//This line is from html-skeleton branch on Git Pull Branch from Github tutorial.
 const root = ReactDOM.createRoot(document.getElementById('root'));
 //root.render(<CryptoCollection collection={collection} />);
 root.render(<AppTodos />);
