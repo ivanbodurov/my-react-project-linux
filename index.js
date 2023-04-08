@@ -12,6 +12,7 @@ import message from './message.js';
 import Boat from './Boat.js';
 import Motor from './Motor.js';
 import Sportcar from './Sportcar.js';
+import Todos from './Todos';
 
 const myFirstElement = <h1>Hello React!</h1>;
 const mySecondElement = <h2>Hello ReactJS!</h2>;
@@ -251,10 +252,34 @@ export default function App() {
   );
 }
 
+//React Memo
+const AppTodos = () => {
+  const [count, setCount] = useState(0);
+  const [todos, setTodos] = useState(["Setup Shopify store", "Paid advertisments", "Handle orders", "Email marketing"]);
+
+  const increment = () => {
+    setCount((c) => c + 1);
+  }
+  return (
+    <>
+      <ul>
+        <Todos todos={todos} />
+      </ul>
+      <hr />
+      <div>
+        Count: {count}
+        <button onClick={increment}>+</button>
+      </div>
+    </>
+  );
+
+}
+
+
 //This comment line is from html-skeleton branch by Github.
 const root = ReactDOM.createRoot(document.getElementById('root'));
 //root.render(<CryptoCollection collection={collection} />);
-root.render(<App />);
+root.render(<AppTodos />);
 
 
 
@@ -316,12 +341,12 @@ class Header {
 
 const myheader = new Header();
 // The window object calls the function:
-window.addEventListener('load', myheader.changeColor); // logs the 'window' object..
-window.addEventListener('load', myheader.changeNumber); // Logs the Header class
+//window.addEventListener('load', myheader.changeColor); // logs the 'window' object..
+//window.addEventListener('load', myheader.changeNumber); // Logs the Header class
 
 // The document object calls the function:
-document.addEventListener('click', myheader.changeColor); // Logs the #document object.
-document.addEventListener('click', myheader.changeNumber); // Logs the Header class
+//document.addEventListener('click', myheader.changeColor); // Logs the #document object.
+//document.addEventListener('click', myheader.changeNumber); // Logs the Header class
 
 // es6 variables
 if (true) {
