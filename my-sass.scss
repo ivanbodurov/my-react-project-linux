@@ -1,5 +1,7 @@
 $myColor: #76be23;
+$myBackgroundColor: #33ccff;
 
-h1 {
+h1, p {
   color: $myColor;
+  background-color: $myBackgroundColor;
 }
