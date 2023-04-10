@@ -305,12 +305,29 @@ function HeaderSass() {
   );
 }
 
+////React Hooks
+function MyColor() {
+  const [color, setColor] = useState("green");
+  return (
+    <>
+      <h1>My color is {color}</h1>
+      <button type='button' onClick={() => setColor("red")}>Red</button>
+      <button type='button' onClick={() => setColor("blue")}>Blue</button>
+      <button type='button' onClick={() => setColor("purple")}>Purple</button>
+      <button type='button' onClick={() => setColor("pink")}>Pink</button>
+      <button type='button' onClick={() => setColor("grey")}>Grey</button>
+      <button type='button' onClick={() => setColor("brown")}>Brown</button>
+      <button type='button' onClick={() => setColor("black")}>Black</button>
+    </>
+  );
+}
+
 
 //This comment line is from html-skeleton branch by Github.
 //This line is from html-skeleton branch on Git Pull Branch from Github tutorial.
 const root = ReactDOM.createRoot(document.getElementById('root'));
 //root.render(<CryptoCollection collection={collection} />);
-root.render(<HeaderSass />);
+root.render(<MyColor />);
 
 
 
