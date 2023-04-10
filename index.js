@@ -15,6 +15,7 @@ import Sportcar from './Sportcar.js';
 import Todos from './Todos';
 //import './style.css';
 import AICar from './AICar';
+import './my-sass.scss';
 
 
 const myFirstElement = <h1>Hello React!</h1>;
@@ -294,12 +295,22 @@ const HeaderStyle = () => {
   );
 }
 
+//React Sass Styling
+function HeaderSass() {
+  return (
+    <>
+      <h1>My Sass Header</h1>
+      <p>My Sass paragraph</p>
+    </>
+  );
+}
+
 
 //This comment line is from html-skeleton branch by Github.
 //This line is from html-skeleton branch on Git Pull Branch from Github tutorial.
 const root = ReactDOM.createRoot(document.getElementById('root'));
 //root.render(<CryptoCollection collection={collection} />);
-root.render(<AICar />);
+root.render(<HeaderSass />);
 
 
 
