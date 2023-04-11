@@ -322,12 +322,39 @@ function MyColor() {
   );
 }
 
+//React useState Hook
+function FavoriteCar() {
+  const [car, setCar] = useState({
+    brand: "Ford",
+    color: "orange",
+    model: "Mustang",
+    year: "2022"
+  });
+
+  const updateCar = () => {
+    setCar((prevState) => {
+      return {
+        ...prevState, 
+        color: 'grey',
+      }
+    });
+  }
+
+  return (
+    <>
+      <h1>My dream car!</h1>
+      <p>It is {car.color} {car.brand} {car.model} from {car.year}.</p>
+      <button type='button' onClick={updateCar}>Update Car</button>
+    </>
+  );
+}
+
 
 //This comment line is from html-skeleton branch by Github.
 //This line is from html-skeleton branch on Git Pull Branch from Github tutorial.
 const root = ReactDOM.createRoot(document.getElementById('root'));
 //root.render(<CryptoCollection collection={collection} />);
-root.render(<MyColor />);
+root.render(<FavoriteCar />);
 
 
 
