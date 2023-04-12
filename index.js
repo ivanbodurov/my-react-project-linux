@@ -6,7 +6,7 @@ import Home from "./pages/Home";
 import Blogs from "./pages/Blogs";
 import Contact from "./pages/Contact";
 import NoPage from "./pages/NoPage";
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import {name, age} from './person.js';
 import message from './message.js';
 import Boat from './Boat.js';
@@ -349,12 +349,41 @@ function FavoriteCar() {
   );
 }
 
+//React useEffect Hook
+function Timer() {
+  const [count, setCount] = useState(0);
+  useEffect(() => {
+    let timer = setTimeout(() => {
+      setCount((c) => c + 1);
+    }, 1000);
+    return () => clearTimeout(timer);
+  }, []);
+  return <h1>I've rendered {count} times!</h1>
+}
+
+function Counter() {
+  const [count, setCount] = useState(0);
+  const [calculation, setCalculation] = useState(0);
+
+  useEffect(() => {
+    setCalculation(() => count * 5);
+  }, [count]);
+
+  return (
+    <>
+      <h2>Count: {count}</h2>
+      <button type='button' onClick={() => setCount((c) => c + 1)}>+</button>
+      <h2>Calculation: {calculation}</h2>
+    </>
+  );
+}
+
 
 //This comment line is from html-skeleton branch by Github.
 //This line is from html-skeleton branch on Git Pull Branch from Github tutorial.
 const root = ReactDOM.createRoot(document.getElementById('root'));
 //root.render(<CryptoCollection collection={collection} />);
-root.render(<FavoriteCar />);
+root.render(<Timer />);
 
 
 
