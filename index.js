@@ -6,7 +6,7 @@ import Home from "./pages/Home";
 import Blogs from "./pages/Blogs";
 import Contact from "./pages/Contact";
 import NoPage from "./pages/NoPage";
-import { useState, useEffect, createContext, useContext } from 'react';
+import { useState, useEffect, createContext, useContext, useRef } from 'react';
 import {name, age} from './person.js';
 import message from './message.js';
 import Boat from './Boat.js';
@@ -424,13 +424,46 @@ function Component5() {
   );
 }
 
+//React useRef Hook
+function AppRef() {
+  const [inputValue, setInputValue] = useState("");
+  const count = useRef(0);
+  const inputElement = useRef();
+  const prevInputValue = useRef();
+
+  // Tova se sluchva zashtoto
+  // useEffect runva callback
+  // SLED promqnata na dependancy-to ili render-vaneto(return-vaneto na JSX) na componenta, 
+  // ako useEffect nqma dependancy
+  useEffect(() => {
+    count.current++;
+    prevInputValue.current = inputValue
+  }, [inputValue]);
+
+  console.log(prevInputValue.current);
+
+  const focusInput = () => {
+    inputElement.current.focus();
+  }
+
+  return (
+    <>
+      <input type='text' ref={inputElement} value={inputValue} onChange={(e) => setInputValue(e.target.value)} />
+      <h1>Render count: {count.current}</h1>
+      <h2>Current input value: {inputValue}</h2>
+      <h2>Previous input value: {prevInputValue.current}</h2>
+      <button type='button' onClick={focusInput}>Focus Input</button>
+    </>
+  );
+}
+
 
 
 //This comment line is from html-skeleton branch by Github.
 //This line is from html-skeleton branch on Git Pull Branch from Github tutorial.
 const root = ReactDOM.createRoot(document.getElementById('root'));
 //root.render(<CryptoCollection collection={collection} />);
-root.render(<Component1 />);
+root.render(<AppRef />);
 
 
 
