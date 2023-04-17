@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useReducer } from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter, Routes, route, Route } from "react-router-dom";
 import Layout from "./pages/Layout";
@@ -457,13 +457,70 @@ function AppRef() {
   );
 }
 
+// React useReducer Hook
+const initialState = [
+  {
+    id: 1,
+    title: "Breakfast",
+    complete: false
+  },
+  {
+    id: 2,
+    title: "Clean",
+    complete: false
+  },
+  {
+    id: 3,
+    title: "Dropshipping",
+    complete: false
+  }
+];
+
+const reducer = (state, action) => {
+  switch (action.type) {
+    case "COMPLETED":
+      const newState = state.map((todo) => {
+        if (todo.id === action.id) {
+          return { ...todo, complete: !todo.complete };          
+        } else {
+          return todo;
+        }
+      });
+      console.log('Action: ' + action.title + ', status: ' + action.type);
+      return newState;
+    
+    default:
+      return state;
+  }
+}
+
+function TodosReducer() {
+  const [currentState, dispatch] = useReducer(reducer, initialState);
+
+  const handleComplete = (todo) => {
+    dispatch({type: "COMPLETED", id: todo.id, title: todo.title});
+  }
+
+  return (
+    <>
+    {currentState.map((todo) => (
+      <div key={todo.id}>
+        <label>
+          <input type="checkbox" checked={todo.complete} onChange={() => handleComplete(todo)} />
+          {todo.title}
+        </label>
+      </div>
+    ))}
+    </>
+  );
+}
 
 
 //This comment line is from html-skeleton branch by Github.
 //This line is from html-skeleton branch on Git Pull Branch from Github tutorial.
 const root = ReactDOM.createRoot(document.getElementById('root'));
 //root.render(<CryptoCollection collection={collection} />);
-root.render(<AppRef />);
+root.render(<TodosReducer />);
 
 
 
