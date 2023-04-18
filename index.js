@@ -1,4 +1,4 @@
-import React, { useReducer } from 'react';
+import React, { useCallback, useReducer } from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter, Routes, route, Route } from "react-router-dom";
 import Layout from "./pages/Layout";
@@ -16,6 +16,7 @@ import Todos from './Todos';
 //import './style.css';
 import AICar from './AICar';
 //import './my-sass.scss';
+import TodosCB from './uCB-Todos';
 
 
 const myFirstElement = <h1>Hello React!</h1>;
@@ -515,12 +516,39 @@ function TodosReducer() {
   );
 }
 
+//React useCallback Hook
+function AppCB() {
+  const [count, setCount] = useState(0);
+  const [todos, setTodos] = useState([]);
+
+  const increment = () => {
+    setCount((c) => c + 1);
+  }
+
+  const addTodo = useCallback(() => {
+    setTodos((t) => [...t, "New Todo"]);
+  }, [todos]);
+
+  return (
+    <>
+      <ul>
+        <TodosCB todos={todos} addTodo={addTodo} />
+      </ul>
+      <hr />
+      <div>
+        Count: {count}
+        <button type='button' onClick={increment}>+</button>
+      </div>
+    </>
+  );
+}
+
 
 //This comment line is from html-skeleton branch by Github.
 //This line is from html-skeleton branch on Git Pull Branch from Github tutorial.
 const root = ReactDOM.createRoot(document.getElementById('root'));
 //root.render(<CryptoCollection collection={collection} />);
-root.render(<TodosReducer />);
+root.render(<AppCB />);
 
 
 
