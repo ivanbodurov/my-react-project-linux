@@ -1,6 +1,6 @@
-import React, { useCallback, useReducer } from 'react';
+import React, { useCallback, useReducer, useMemo } from 'react';
 import ReactDOM from 'react-dom/client';
-import { BrowserRouter, Routes, route, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Layout from "./pages/Layout";
 import Home from "./pages/Home";
 import Blogs from "./pages/Blogs";
@@ -543,12 +543,56 @@ function AppCB() {
   );
 }
 
+//React useMemo Hook
+function AppMemo() {
+  const [count, setCount] = useState(0);
+  const [todos, setTodos] = useState([]);
+  const calculation = useMemo(() => expensiveCalculation(count), [count]);
+
+  const increment = () => {
+    setCount(c => c + 1);
+  }
+
+  const addTodo = () => {
+    setTodos(t => [...t, "New Todo"])
+  }
+
+  return (
+    <div>
+      <div>
+        <h2>TO-DO List</h2>
+        <ul>
+        {todos.map((todo, index) => {
+          return <li key={index}>{todo}</li>;
+        })}
+        </ul>
+        <button type='button' onClick={addTodo}>Add Todo</button>  
+      </div>
+      <hr />
+      <div>
+        <h2>Count: {count}</h2>
+        <button type='button' onClick={increment}>+</button>
+        <h2>Expensive calculation</h2>
+        {calculation}
+      </div>
+    </div>
+  );
+}
+
+const expensiveCalculation = (num) => {
+  console.log('Calculation..');
+  for (let i = 0; i < 1000000000; i++) {
+    num++;
+  }
+  return num;
+}
+
 
 //This comment line is from html-skeleton branch by Github.
 //This line is from html-skeleton branch on Git Pull Branch from Github tutorial.
 const root = ReactDOM.createRoot(document.getElementById('root'));
 //root.render(<CryptoCollection collection={collection} />);
-root.render(<AppCB />);
+root.render(<AppMemo />);
 
 
 
