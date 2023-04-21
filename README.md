@@ -12,3 +12,5 @@ Taken React Lists..
 This line is from 'update-readme' branch and push to Github.
 
 This line is added to push the changes with SSH.
+
+Add this line for Git Amend.
