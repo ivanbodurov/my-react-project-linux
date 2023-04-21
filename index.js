@@ -17,6 +17,7 @@ import Todos from './Todos';
 import AICar from './AICar';
 //import './my-sass.scss';
 import TodosCB from './uCB-Todos';
+import useFetch from './useFetch';
 
 
 const myFirstElement = <h1>Hello React!</h1>;
@@ -587,12 +588,28 @@ const expensiveCalculation = (num) => {
   return num;
 }
 
+//React Custom Hooks
+const HomeCustom = () => {
+
+  const [data] = useFetch("https://jsonplaceholder.typicode.com/todos");
+
+  return (
+    <>
+      <ul>
+      {data && data.map((item) => {
+        return <li key={item.id}>{item.title}</li>;
+      })}
+      </ul>
+    </>
+  );
+}
+
 
 //This comment line is from html-skeleton branch by Github.
 //This line is from html-skeleton branch on Git Pull Branch from Github tutorial.
 const root = ReactDOM.createRoot(document.getElementById('root'));
 //root.render(<CryptoCollection collection={collection} />);
-root.render(<AppMemo />);
+root.render(<HomeCustom />);
 
 
 
